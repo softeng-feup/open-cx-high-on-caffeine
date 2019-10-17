@@ -1,0 +1,4 @@
+#Thu Oct 17 11:55:16 BST 2019
+base.0=C\:\\Users\\Rita\\Documents\\..MIEIC\\..3 ANO\\ESOF\\open-cx-high-on-caffeine\\hello_world\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
