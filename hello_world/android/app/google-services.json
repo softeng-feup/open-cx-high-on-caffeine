@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "505453378364",
+    "firebase_url": "https://esof-1.firebaseio.com",
+    "project_id": "esof-1",
+    "storage_bucket": "esof-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505453378364:android:2b82b1678ac7c1b98e7c39",
+        "android_client_info": {
+          "package_name": "com.highoncaffeine.firstproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505453378364-d5l9bn0l6gob2f5chgcaoibmi2gpchc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgk25c7ParYn3k15xfjdeAf9X90WYrA80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505453378364-d5l9bn0l6gob2f5chgcaoibmi2gpchc9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
