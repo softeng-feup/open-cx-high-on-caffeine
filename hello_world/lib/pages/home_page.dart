@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
     questionRef = database.reference().child('questions');
     questionRef.onChildAdded.listen(_onEntryAdded);
     questionRef.onChildChanged.listen(_onEntryChanged);
+    questionRef.onChildRemoved.listen(_onEntryRemoved);
 
     //_checkEmailVerification();
 
@@ -56,13 +57,21 @@ class _HomePageState extends State<HomePage> {
         .orderByChild("userId")
         .equalTo(widget.userId);
     _onTodoAddedSubscription = _todoQuery.onChildAdded.listen(onEntryAdded);
-    _onTodoChangedSubscription =
-        _todoQuery.onChildChanged.listen(onEntryChanged);
+    _onTodoChangedSubscription =_todoQuery.onChildChanged.listen(onEntryChanged);
   }
 
   _onEntryAdded(Event event) {
     setState(() {
       questions.add(Question.fromSnapshot(event.snapshot));
+    });
+  }3
+  _onEntryRemoved(Event event) {
+    setState(() {
+      var old = questions.singleWhere((entry) {
+      return entry.key == event.snapshot.key;
+      });
+      questions.remove(Question.fromSnapshot(event.snapshot));
+      questions.removeAt(questions.indexOf(old));
     });
   }
 
@@ -75,6 +84,15 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+void handleSubmit() {
+    final FormState form = formKey.currentState;
+
+    if (form.validate()) {
+      form.save();
+      form.reset();
+      questionRef.push().set(question.toJson());
+    }
+  }
 //  void _checkEmailVerification() async {
 //    _isEmailVerified = await widget.auth.isEmailVerified();
 //    if (!_isEmailVerified) {
@@ -158,16 +176,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _todoList.add(Todo.fromSnapshot(event.snapshot));
     });
-  }
-
-  void handleSubmit() {
-    final FormState form = formKey.currentState;
-
-    if (form.validate()) {
-      form.save();
-      form.reset();
-      questionRef.push().set(question.toJson());
-    }
   }
 
   signOut() async {
