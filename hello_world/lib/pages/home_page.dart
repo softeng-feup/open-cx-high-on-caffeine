@@ -1,3 +1,4 @@
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -19,12 +20,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Todo> _todoList;
 
+  List<Question> questions = List();
+  Question question;
+  DatabaseReference questionRef;
+
   final FirebaseDatabase _database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final _textEditingController = TextEditingController();
   StreamSubscription<Event> _onTodoAddedSubscription;
   StreamSubscription<Event> _onTodoChangedSubscription;
+
+
 
   Query _todoQuery;
 
@@ -33,6 +40,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    question = Question("");
+
+    final FirebaseDatabase database = FirebaseDatabase.instance;
+    questionRef = database.reference().child('questions');
+    questionRef.onChildAdded.listen(_onEntryAdded);
+    questionRef.onChildChanged.listen(_onEntryChanged);
 
     //_checkEmailVerification();
 
@@ -45,6 +58,21 @@ class _HomePageState extends State<HomePage> {
     _onTodoAddedSubscription = _todoQuery.onChildAdded.listen(onEntryAdded);
     _onTodoChangedSubscription =
         _todoQuery.onChildChanged.listen(onEntryChanged);
+  }
+
+  _onEntryAdded(Event event) {
+    setState(() {
+      questions.add(Question.fromSnapshot(event.snapshot));
+    });
+  }
+
+  _onEntryChanged(Event event) {
+    var old = questions.singleWhere((entry) {
+      return entry.key == event.snapshot.key;
+    });
+    setState(() {
+      questions[questions.indexOf(old)] = Question.fromSnapshot(event.snapshot);
+    });
   }
 
 //  void _checkEmailVerification() async {
@@ -130,6 +158,16 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _todoList.add(Todo.fromSnapshot(event.snapshot));
     });
+  }
+
+  void handleSubmit() {
+    final FormState form = formKey.currentState;
+
+    if (form.validate()) {
+      form.save();
+      form.reset();
+      questionRef.push().set(question.toJson());
+    }
   }
 
   signOut() async {
@@ -249,7 +287,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Flutter login demo'),
+          title: new Text('High on Caffeine'),
           actions: <Widget>[
             new FlatButton(
                 child: new Text('Logout',
@@ -257,7 +295,48 @@ class _HomePageState extends State<HomePage> {
                 onPressed: signOut)
           ],
         ),
-        body: showTodoList(),
+        body:  Column(
+            children: <Widget>[
+              Flexible(
+                flex: 0,
+            child: Center(
+              child: Form(
+                key: formKey,
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(Icons.info),
+                      title: TextFormField(
+                        initialValue: "",
+                        onSaved: (val) => question.phrase = val,
+                        validator: (val) => val == "" ? val : null,
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: () {
+                        handleSubmit();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),),
+            Flexible(
+            child: FirebaseAnimatedList(
+              query: questionRef,
+              itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                  Animation<double> animation, int index) {
+                return new ListTile(
+                  leading: Icon(Icons.message),
+                  title: Text(questions[index].phrase),
+                );
+              },
+            ),
+          ),
+        ],
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showAddTodoDialog(context);
@@ -265,5 +344,21 @@ class _HomePageState extends State<HomePage> {
           tooltip: 'Increment',
           child: Icon(Icons.add),
         ));
+  }
+}
+class Question {
+  String key;
+  String phrase;
+
+  Question(this.phrase);
+
+  Question.fromSnapshot(DataSnapshot snapshot)
+      :key = snapshot.key,
+       phrase = snapshot.value["phrase"];
+
+  toJson() {
+    return {
+      "phrase": phrase,
+    };
   }
 }
