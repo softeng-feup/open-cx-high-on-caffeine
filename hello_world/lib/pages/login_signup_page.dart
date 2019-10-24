@@ -91,7 +91,7 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Flutter login demo'),
+          title: new Text('High On Caffeine'),
         ),
         body: Stack(
           children: <Widget>[
@@ -177,8 +177,15 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
         padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 48.0,
-          child: Image.asset('assets/flutter-icon.png'),
+          radius: 70.0,
+          child: ClipOval(
+            child: new SizedBox(
+              width: 200,
+              height: 200,
+              child: Image.asset('assets/images/cofee.jpg' ,
+                fit: BoxFit.fill,),
+              
+            ) ,)
         ),
       ),
     );
