@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../models/todo.dart';
+import '../models/question.dart';
 import 'dart:async';
 
 class HomePage extends StatefulWidget {
@@ -31,8 +32,6 @@ class _HomePageState extends State<HomePage> {
   StreamSubscription<Event> _onTodoAddedSubscription;
   StreamSubscription<Event> _onTodoChangedSubscription;
 
-
-
   Query _todoQuery;
 
   //bool _isEmailVerified = false;
@@ -57,20 +56,22 @@ class _HomePageState extends State<HomePage> {
         .orderByChild("userId")
         .equalTo(widget.userId);
     _onTodoAddedSubscription = _todoQuery.onChildAdded.listen(onEntryAdded);
-    _onTodoChangedSubscription =_todoQuery.onChildChanged.listen(onEntryChanged);
+    _onTodoChangedSubscription =
+        _todoQuery.onChildChanged.listen(onEntryChanged);
   }
 
   _onEntryAdded(Event event) {
     setState(() {
       questions.add(Question.fromSnapshot(event.snapshot));
     });
-  }3
+  }
+
   _onEntryRemoved(Event event) {
     setState(() {
       var old = questions.singleWhere((entry) {
-      return entry.key == event.snapshot.key;
+        return entry.key == event.snapshot.key;
       });
-      questions.remove(Question.fromSnapshot(event.snapshot));
+      //questions.remove(Question.fromSnapshot(event.snapshot));
       questions.removeAt(questions.indexOf(old));
     });
   }
@@ -84,7 +85,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-void handleSubmit() {
+  void handleSubmit() {
     final FormState form = formKey.currentState;
 
     if (form.validate()) {
@@ -303,47 +304,48 @@ void handleSubmit() {
                 onPressed: signOut)
           ],
         ),
-        body:  Column(
-            children: <Widget>[
-              Flexible(
-                flex: 0,
-            child: Center(
-              child: Form(
-                key: formKey,
-                child: Flex(
-                  direction: Axis.vertical,
-                  children: <Widget>[
-                    ListTile(
-                      leading: Icon(Icons.info),
-                      title: TextFormField(
-                        initialValue: "",
-                        onSaved: (val) => question.phrase = val,
-                        validator: (val) => val == "" ? val : null,
+        body: Column(
+          children: <Widget>[
+            Flexible(
+              flex: 0,
+              child: Center(
+                child: Form(
+                  key: formKey,
+                  child: Flex(
+                    direction: Axis.vertical,
+                    children: <Widget>[
+                      ListTile(
+                        leading: Icon(Icons.info),
+                        title: TextFormField(
+                          initialValue: "",
+                          onSaved: (val) => question.phrase = val,
+                          validator: (val) => val == "" ? val : null,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.send),
-                      onPressed: () {
-                        handleSubmit();
-                      },
-                    ),
-                  ],
+                      IconButton(
+                        icon: Icon(Icons.send),
+                        onPressed: () {
+                          handleSubmit();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),),
-            Flexible(
-            child: FirebaseAnimatedList(
-              query: questionRef,
-              itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                  Animation<double> animation, int index) {
-                return new ListTile(
-                  leading: Icon(Icons.message),
-                  title: Text(questions[index].phrase),
-                );
-              },
             ),
-          ),
-        ],
+            Flexible(
+              child: FirebaseAnimatedList(
+                query: questionRef,
+                itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                    Animation<double> animation, int index) {
+                  return new ListTile(
+                    leading: Icon(Icons.message),
+                    title: Text(questions[index].phrase),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -352,21 +354,5 @@ void handleSubmit() {
           tooltip: 'Increment',
           child: Icon(Icons.add),
         ));
-  }
-}
-class Question {
-  String key;
-  String phrase;
-
-  Question(this.phrase);
-
-  Question.fromSnapshot(DataSnapshot snapshot)
-      :key = snapshot.key,
-       phrase = snapshot.value["phrase"];
-
-  toJson() {
-    return {
-      "phrase": phrase,
-    };
   }
 }

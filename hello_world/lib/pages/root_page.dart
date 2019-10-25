@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/pages/create_profile_page.dart';
 import '../pages/login_signup_page.dart';
 import '../services/authentication.dart';
 import '../pages/home_page.dart';
@@ -77,10 +78,14 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-          return new HomePage(
+          /*return new HomePage(
             userId: _userId,
             auth: widget.auth,
             logoutCallback: logoutCallback,
+          );*/
+          return new CreateProfilePage(
+            userId: _userId,
+            auth: widget.auth,
           );
         } else
           return buildWaitingScreen();
