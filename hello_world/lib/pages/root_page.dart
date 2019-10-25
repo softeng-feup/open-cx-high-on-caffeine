@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/pages/create_profile_page.dart';
 import '../pages/login_signup_page.dart';
 import '../services/authentication.dart';
 import '../pages/home_page.dart';
@@ -82,6 +83,11 @@ class _RootPageState extends State<RootPage> {
             auth: widget.auth,
             logoutCallback: logoutCallback,
           );
+          /*
+          return new CreateProfilePage(
+            userId: _userId,
+            auth: widget.auth,
+          );*/
         } else
           return buildWaitingScreen();
         break;
