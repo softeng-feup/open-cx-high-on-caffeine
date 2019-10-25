@@ -1,33 +1,65 @@
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
+import '../models/question.dart';
 import '../models/user.dart';
 
-class CreateProfilePage extends StatefulWidget {
-  CreateProfilePage({Key key, this.auth, this.userId}) : super(key: key);
+class QuestionsPage extends StatefulWidget {
+  QuestionsPage({Key key, this.auth, this.userId}) : super(key: key);
 
   final BaseAuth auth;
   final String userId;
+
   @override
-  State<StatefulWidget> createState() => new _CreateProfileState();
+  State<StatefulWidget> createState() => new _QuestionsPageState();
 }
 
-class _CreateProfileState extends State<CreateProfilePage> {
-  DatabaseReference userRef;
+class _QuestionsPageState extends State<QuestionsPage> {
+  List<Question> questions = List();
+  Question question;
+  DatabaseReference questionRef;
 
   final FirebaseDatabase _database = FirebaseDatabase.instance;
-    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final _textEditingController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  User user;
+  final _textEditingController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    user = User("", "", "");
+    question = Question("");
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
-    userRef = database.reference().child('Users');
+    questionRef = database.reference().child('questions');
+    questionRef.onChildAdded.listen(_onEntryAdded);
+    questionRef.onChildChanged.listen(_onEntryChanged);
+    questionRef.onChildRemoved.listen(_onEntryRemoved);
+  }
+
+  _onEntryAdded(Event event) {
+    setState(() {
+      questions.add(Question.fromSnapshot(event.snapshot));
+    });
+  }
+
+  _onEntryRemoved(Event event) {
+    setState(() {
+      var old = questions.singleWhere((entry) {
+        return entry.key == event.snapshot.key;
+      });
+      //questions.remove(Question.fromSnapshot(event.snapshot));
+      questions.removeAt(questions.indexOf(old));
+    });
+  }
+
+  _onEntryChanged(Event event) {
+    var old = questions.singleWhere((entry) {
+      return entry.key == event.snapshot.key;
+    });
+    setState(() {
+      questions[questions.indexOf(old)] = Question.fromSnapshot(event.snapshot);
+    });
   }
 
   void handleSubmit() {
@@ -36,7 +68,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
     if (form.validate()) {
       form.save();
       form.reset();
-      userRef.push().set(user.toJson());
+      questionRef.push().set(question.toJson());
     }
   }
 
@@ -57,36 +89,11 @@ class _CreateProfileState extends State<CreateProfilePage> {
                   direction: Axis.vertical,
                   children: <Widget>[
                     ListTile(
-                      leading: Text(
-                        "Name",
-                        textScaleFactor: 2,
-                        textAlign: TextAlign.center,
-                      ),
+                      leading: Icon(Icons.info),
                       title: TextFormField(
                         initialValue: "",
-                        onSaved: (val) => user.name = val,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Text(
-                        "Country",
-                        textScaleFactor: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                      title: TextFormField(
-                        initialValue: "",
-                        onSaved: (val) => user.country = val,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Text(
-                        "College",
-                        textScaleFactor: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                      title: TextFormField(
-                        initialValue: "",
-                        onSaved: (val) => user.college = val,
+                        onSaved: (val) => question.phrase = val,
+                        validator: (val) => val == "" ? val : null,
                       ),
                     ),
                     IconButton(
@@ -100,7 +107,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
               ),
             ),
           ),
-          /*Flexible(
+          Flexible(
             child: FirebaseAnimatedList(
               query: questionRef,
               itemBuilder: (BuildContext context, DataSnapshot snapshot,
@@ -111,7 +118,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                 );
               },
             ),
-          ),*/
+          ),
         ],
       ),
     );

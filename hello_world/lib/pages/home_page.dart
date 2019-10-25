@@ -1,9 +1,11 @@
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_world/pages/create_profile_page.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../models/todo.dart';
 import '../models/question.dart';
+import 'questions_page.dart';
 import 'dart:async';
 
 class HomePage extends StatefulWidget {
@@ -20,11 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Todo> _todoList;
-
-  List<Question> questions = List();
-  Question question;
-  DatabaseReference questionRef;
-
+  String _userId = "";
   final FirebaseDatabase _database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -36,16 +34,15 @@ class _HomePageState extends State<HomePage> {
 
   //bool _isEmailVerified = false;
 
+  void logoutCallback() {
+    setState(() {
+      _userId = "";
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    question = Question("");
-
-    final FirebaseDatabase database = FirebaseDatabase.instance;
-    questionRef = database.reference().child('questions');
-    questionRef.onChildAdded.listen(_onEntryAdded);
-    questionRef.onChildChanged.listen(_onEntryChanged);
-    questionRef.onChildRemoved.listen(_onEntryRemoved);
 
     //_checkEmailVerification();
 
@@ -60,40 +57,6 @@ class _HomePageState extends State<HomePage> {
         _todoQuery.onChildChanged.listen(onEntryChanged);
   }
 
-  _onEntryAdded(Event event) {
-    setState(() {
-      questions.add(Question.fromSnapshot(event.snapshot));
-    });
-  }
-
-  _onEntryRemoved(Event event) {
-    setState(() {
-      var old = questions.singleWhere((entry) {
-        return entry.key == event.snapshot.key;
-      });
-      //questions.remove(Question.fromSnapshot(event.snapshot));
-      questions.removeAt(questions.indexOf(old));
-    });
-  }
-
-  _onEntryChanged(Event event) {
-    var old = questions.singleWhere((entry) {
-      return entry.key == event.snapshot.key;
-    });
-    setState(() {
-      questions[questions.indexOf(old)] = Question.fromSnapshot(event.snapshot);
-    });
-  }
-
-  void handleSubmit() {
-    final FormState form = formKey.currentState;
-
-    if (form.validate()) {
-      form.save();
-      form.reset();
-      questionRef.push().set(question.toJson());
-    }
-  }
 //  void _checkEmailVerification() async {
 //    _isEmailVerified = await widget.auth.isEmailVerified();
 //    if (!_isEmailVerified) {
@@ -295,64 +258,56 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text('High on Caffeine'),
-          actions: <Widget>[
-            new FlatButton(
-                child: new Text('Logout',
-                    style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-                onPressed: signOut)
-          ],
-        ),
-        body: Column(
-          children: <Widget>[
-            Flexible(
-              flex: 0,
-              child: Center(
-                child: Form(
-                  key: formKey,
-                  child: Flex(
-                    direction: Axis.vertical,
-                    children: <Widget>[
-                      ListTile(
-                        leading: Icon(Icons.info),
-                        title: TextFormField(
-                          initialValue: "",
-                          onSaved: (val) => question.phrase = val,
-                          validator: (val) => val == "" ? val : null,
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.send),
-                        onPressed: () {
-                          handleSubmit();
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Flexible(
-              child: FirebaseAnimatedList(
-                query: questionRef,
-                itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                    Animation<double> animation, int index) {
-                  return new ListTile(
-                    leading: Icon(Icons.message),
-                    title: Text(questions[index].phrase),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showAddTodoDialog(context);
-          },
-          tooltip: 'Increment',
-          child: Icon(Icons.add),
-        ));
+      appBar: new AppBar(
+        title: new Text('High on Caffeine'),
+        actions: <Widget>[
+          new FlatButton(
+              child: new Text('Logout',
+                  style: new TextStyle(fontSize: 17.0, color: Colors.white)),
+              onPressed: signOut)
+        ],
+      ),
+      body: new Row(
+        children: <Widget>[
+        Flex(direction: Axis.vertical, children: <Widget>[
+          IconButton(
+            iconSize: 100,
+            tooltip: "Questions",
+            icon: Icon(Icons.question_answer),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new QuestionsPage(
+                          userId: _userId, auth: widget.auth)));
+            },
+          ),
+          IconButton(
+            iconSize: 100,
+            tooltip: "Questions",
+            icon: Icon(Icons.assignment_ind),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new CreateProfilePage(
+                          userId: _userId, auth: widget.auth)));
+            },
+          ),
+        ]),
+        Flex(direction: Axis.vertical, children: <Widget>[
+          Text("\n\n"),
+          Text(
+            "Questions",
+            textScaleFactor: 2,
+          ),
+          Text("\n\n\n\n"),
+          Text(
+            "  Edit Profile",
+            textScaleFactor: 2,
+          )
+        ])
+      ]),
+    );
   }
 }
