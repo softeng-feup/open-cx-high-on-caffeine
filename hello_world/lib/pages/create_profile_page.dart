@@ -1,13 +1,16 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../models/user.dart';
 
 class CreateProfilePage extends StatefulWidget {
-  CreateProfilePage({Key key, this.auth, this.userId}) : super(key: key);
+  CreateProfilePage({Key key, this.auth, this.userId,this.user_received}) : super(key: key);
 
   final BaseAuth auth;
   final String userId;
+  final User user_received;
   @override
   State<StatefulWidget> createState() => new _CreateProfileState();
 }
@@ -37,6 +40,8 @@ class _CreateProfileState extends State<CreateProfilePage> {
       form.save();
       form.reset();
       userRef.push().set(user.toJson());
+      Navigator.pop(context,user);
+      
     }
   }
 
@@ -63,7 +68,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                         textAlign: TextAlign.center,
                       ),
                       title: TextFormField(
-                        initialValue: "",
+                        initialValue: widget.user_received.name,
                         onSaved: (val) => user.name = val,
                       ),
                     ),
@@ -74,7 +79,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                         textAlign: TextAlign.center,
                       ),
                       title: TextFormField(
-                        initialValue: "",
+                        initialValue: widget.user_received.country,
                         onSaved: (val) => user.country = val,
                       ),
                     ),
@@ -85,7 +90,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                         textAlign: TextAlign.center,
                       ),
                       title: TextFormField(
-                        initialValue: "",
+                        initialValue: widget.user_received.college,
                         onSaved: (val) => user.college = val,
                       ),
                     ),

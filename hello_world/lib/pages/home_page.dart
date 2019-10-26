@@ -1,5 +1,6 @@
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_world/models/user.dart';
 import 'package:hello_world/pages/create_profile_page.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -21,6 +22,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+    User user = new User("", "", "");
+    String result;
+
   List<Todo> _todoList;
   String _userId = "";
   final FirebaseDatabase _database = FirebaseDatabase.instance;
@@ -284,26 +288,28 @@ class _HomePageState extends State<HomePage> {
           ),
           IconButton(
             iconSize: 100,
-            tooltip: "Questions",
+            tooltip: "Edit Profile",
             icon: Icon(Icons.assignment_ind),
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              User aux_user =await Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => new CreateProfilePage(
-                          userId: _userId, auth: widget.auth)));
-            },
+                          userId: _userId, auth: widget.auth, user_received: user,)));
+            if(aux_user!=null)
+              user=aux_user;
+            }
           ),
         ]),
-        Flex(direction: Axis.vertical, children: <Widget>[
+        Flex(direction: Axis.vertical, crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
           Text("\n\n"),
           Text(
-            "Questions",
+            "Ask Questions",
             textScaleFactor: 2,
           ),
           Text("\n\n\n\n"),
           Text(
-            "  Edit Profile",
+            "Edit Profile",
             textScaleFactor: 2,
           )
         ])
