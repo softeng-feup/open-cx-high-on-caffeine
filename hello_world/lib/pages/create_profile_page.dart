@@ -7,6 +7,8 @@ import '../models/user.dart';
 class CreateProfilePage extends StatefulWidget {
   CreateProfilePage({Key key, this.auth, this.userId, this.userReceived})
       : super(key: key);
+  DatabaseReference dataBaseRef;
+  final FirebaseDatabase _database = FirebaseDatabase.instance;
 
   final BaseAuth auth;
   final String userId;
@@ -23,10 +25,25 @@ class _CreateProfileState extends State<CreateProfilePage> {
 
   User user;
 
+  checkAlreadyExists() async {
+    if (widget.userReceived.name == "" && widget.userReceived.country == "" && widget.userReceived.college == "" ) {
+      FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
+      widget.dataBaseRef = _database.reference().child('Users').child(userFirebase.uid);
+      widget.dataBaseRef.once().then((DataSnapshot snapshot) {
+        Map<dynamic, dynamic> map = snapshot.value;
+        widget.userReceived.college = map.values.toList()[0];
+        widget.userReceived.country = map.values.toList()[1];
+        widget.userReceived.name = map.values.toList()[2];
+        print(widget.userReceived);
+      });
+    }
+  }
+
   @override
   initState() {
     super.initState();
     user = User("", "", "", "");
+    checkAlreadyExists();
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
 
