@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 
 class Question {
+  String userName;
   String key;
   String phrase;
 
@@ -9,11 +10,13 @@ class Question {
 
   Question.fromSnapshot(DataSnapshot snapshot)
       :key = snapshot.key,
-       phrase = snapshot.value["phrase"];
+       phrase = snapshot.value["phrase"],
+       userName = snapshot.value["userName"];
 
   toJson() {
     return {
-      "phrase": phrase,
+      "userName": userName,
+      "phrase": phrase
     };
   }
 }
