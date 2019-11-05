@@ -1,16 +1,16 @@
-import 'dart:isolate';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../models/user.dart';
 
 class CreateProfilePage extends StatefulWidget {
-  CreateProfilePage({Key key, this.auth, this.userId,this.user_received}) : super(key: key);
+  CreateProfilePage({Key key, this.auth, this.userId, this.userReceived})
+      : super(key: key);
 
   final BaseAuth auth;
   final String userId;
-  final User user_received;
+  final User userReceived;
   @override
   State<StatefulWidget> createState() => new _CreateProfileState();
 }
@@ -19,29 +19,29 @@ class _CreateProfileState extends State<CreateProfilePage> {
   DatabaseReference userRef;
 
   final FirebaseDatabase _database = FirebaseDatabase.instance;
-    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final _textEditingController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   User user;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
-    user = User("", "", "");
+    user = User("", "", "", "");
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
+
     userRef = database.reference().child('Users');
   }
 
-  void handleSubmit() {
+  Future handleSubmit() async {
     final FormState form = formKey.currentState;
 
     if (form.validate()) {
       form.save();
       form.reset();
-      userRef.push().set(user.toJson());
-      Navigator.pop(context,user);
-      
+      FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
+      userRef.child(userFirebase.uid).set(user.toJson());
+      Navigator.pop(context, user);
     }
   }
 
@@ -68,7 +68,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                         textAlign: TextAlign.center,
                       ),
                       title: TextFormField(
-                        initialValue: widget.user_received.name,
+                        initialValue: widget.userReceived.name,
                         onSaved: (val) => user.name = val,
                       ),
                     ),
@@ -79,7 +79,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                         textAlign: TextAlign.center,
                       ),
                       title: TextFormField(
-                        initialValue: widget.user_received.country,
+                        initialValue: widget.userReceived.country,
                         onSaved: (val) => user.country = val,
                       ),
                     ),
@@ -90,7 +90,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                         textAlign: TextAlign.center,
                       ),
                       title: TextFormField(
-                        initialValue: widget.user_received.college,
+                        initialValue: widget.userReceived.college,
                         onSaved: (val) => user.college = val,
                       ),
                     ),

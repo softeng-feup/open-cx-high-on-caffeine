@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import '../services/authentication.dart';
@@ -62,9 +63,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
     });
   }
 
-  void handleSubmit() {
+  Future handleSubmit() async {
     final FormState form = formKey.currentState;
-
+      FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
+      question.userName = userFirebase.email;
     if (form.validate()) {
       form.save();
       form.reset();
