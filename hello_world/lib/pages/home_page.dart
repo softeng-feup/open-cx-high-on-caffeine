@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_world/models/user.dart';
 import 'package:hello_world/pages/create_profile_page.dart';
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   User user = new User("", "", "", "");
   String result;
+  DatabaseReference dataBaseRef;
 
   String _userId = "";
   final FirebaseDatabase _database = FirebaseDatabase.instance;
@@ -113,8 +115,21 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  checkAlreadyExists() async {
+    FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
+    dataBaseRef = _database.reference().child('Users').child(userFirebase.uid);
+    dataBaseRef.once().then((DataSnapshot snapshot) {
+      Map<dynamic, dynamic> map = snapshot.value;
+      user.college = map.values.toList()[0];
+      user.country = map.values.toList()[1];
+      user.name = map.values.toList()[2];
+      print(user);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkAlreadyExists();
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('High on Caffeine'),
