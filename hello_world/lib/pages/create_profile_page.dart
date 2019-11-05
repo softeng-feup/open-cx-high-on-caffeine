@@ -23,27 +23,26 @@ class _CreateProfileState extends State<CreateProfilePage> {
   final FirebaseDatabase _database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  User user;
-
   checkAlreadyExists() async {
-    if (widget.userReceived.name == "" && widget.userReceived.country == "" && widget.userReceived.college == "" ) {
-      FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
-      widget.dataBaseRef = _database.reference().child('Users').child(userFirebase.uid);
-      widget.dataBaseRef.once().then((DataSnapshot snapshot) {
-        Map<dynamic, dynamic> map = snapshot.value;
-        widget.userReceived.college = map.values.toList()[0];
-        widget.userReceived.country = map.values.toList()[1];
-        widget.userReceived.name = map.values.toList()[2];
-        print(widget.userReceived);
-      });
-    }
+    FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
+    widget.dataBaseRef =
+        _database.reference().child('Users').child(userFirebase.uid);
+    widget.dataBaseRef.once().then((DataSnapshot snapshot) {
+      Map<dynamic, dynamic> map = snapshot.value;
+      widget.userReceived.college = map.values.toList()[0];
+      widget.userReceived.country = map.values.toList()[1];
+      widget.userReceived.name = map.values.toList()[2];
+      print(widget.userReceived);
+    });
   }
+  
 
   @override
   initState() {
-    super.initState();
-    user = User("", "", "", "");
     checkAlreadyExists();
+    super.initState();
+    //user = User("", "", "", "");
+    //user = widget.userReceived;
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
 
@@ -55,15 +54,16 @@ class _CreateProfileState extends State<CreateProfilePage> {
 
     if (form.validate()) {
       form.save();
-      form.reset();
+      //form.reset();
       FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
-      userRef.child(userFirebase.uid).set(user.toJson());
-      Navigator.pop(context, user);
+      userRef.child(userFirebase.uid).set(widget.userReceived.toJson());
+      Navigator.pop(context, widget.userReceived);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('High on Caffeine'),
@@ -86,7 +86,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                       ),
                       title: TextFormField(
                         initialValue: widget.userReceived.name,
-                        onSaved: (val) => user.name = val,
+                        onSaved: (val) => widget.userReceived.name = val,
                       ),
                     ),
                     ListTile(
@@ -97,7 +97,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                       ),
                       title: TextFormField(
                         initialValue: widget.userReceived.country,
-                        onSaved: (val) => user.country = val,
+                        onSaved: (val) => widget.userReceived.country = val,
                       ),
                     ),
                     ListTile(
@@ -108,7 +108,7 @@ class _CreateProfileState extends State<CreateProfilePage> {
                       ),
                       title: TextFormField(
                         initialValue: widget.userReceived.college,
-                        onSaved: (val) => user.college = val,
+                        onSaved: (val) => widget.userReceived.college = val,
                       ),
                     ),
                     IconButton(
