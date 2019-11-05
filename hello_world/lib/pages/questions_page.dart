@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../models/question.dart';
-import '../models/user.dart';
 
 class QuestionsPage extends StatefulWidget {
   QuestionsPage({Key key, this.auth, this.userId}) : super(key: key);
@@ -21,10 +20,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
   Question question;
   DatabaseReference questionRef;
 
-  final FirebaseDatabase _database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  final _textEditingController = TextEditingController();
 
   @override
   void initState() {
@@ -65,8 +61,8 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   Future handleSubmit() async {
     final FormState form = formKey.currentState;
-      FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
-      question.userName = userFirebase.email;
+    FirebaseUser userFirebase = await FirebaseAuth.instance.currentUser();
+    question.userName = userFirebase.email;
     if (form.validate()) {
       form.save();
       form.reset();
