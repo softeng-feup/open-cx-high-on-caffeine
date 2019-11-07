@@ -1,4 +1,4 @@
-# openCX-*your module name* Development Report
+# openCX-high-on-caffeine Development Report
 
 Welcome to the documentation pages of the *your (sub)product name* of **openCX**!
 
@@ -31,27 +31,23 @@ Please contact us!
 
 Thank you!
 
-*team members names*
+Gonçalo Fernandes Pereira   
+Maria Gonçalves Caldeira    
+Ana Rita Fonseca Santos         
+Margarida Ribeiro Cosme     
+Luis Miguel Guimas Marques  
 
 ## Product Vision
-Start by defining a clear and concise vision for your module, to help members of the team, contributors, and users into focusing their often disparate views into a concise, visual, and short textual form. It provides a "high concept" of the product for marketers, developers, and managers.
-
-A product vision describes the essential of the product and sets the direction to where a product is headed, and what the product will deliver in the future.
-
-To learn more about how to write a good product vision, please see also:
-* [How To Create A Convincing Product Vision To Guide Your Team, by uxstudioteam.com](https://uxstudioteam.com/ux-blog/product-vision/)
-* [Product Management: Product Vision, by ProductPlan](https://www.productplan.com/glossary/product-vision/)
-* [Vision, by scrumbook.org](http://scrumbook.org/value-stream/vision.html)
-* [How to write a vision, by dummies.com](https://www.dummies.com/business/marketing/branding/how-to-write-vision-and-mission-statements-for-your-brand/)
-* [20 Inspiring Vision Statement Examples (2019 Updated), by lifehack.org](https://www.lifehack.org/articles/work/20-sample-vision-statement-for-the-new-startup.html)
+An app to help speakers interact with their audience in a more intuitive and fun way.
+Destroy the distance between them and between the audience itself.
 
 ## Elevator Pitch
-Draft a small text to help you quickly introduce and describe your product in a short time and a few words, a technique usually known as elevator pitch.
-
-Take a look at the following links to learn some techniques:
-* [Crafting an Elevator Pitch](https://www.mindtools.com/pages/article/elevator-pitch.htm)
-* [The Best Elevator Pitch Examples, Templates, and Tactics - A Guide to Writing an Unforgettable Elevator Speech, by strategypeak.com](https://strategypeak.com/elevator-pitch-examples/)
-* [Top 7 Killer Elevator Pitch Examples, by toggl.com](https://blog.toggl.com/elevator-pitch-examples/)
+When you are presenting a session in a conference, dont you feel like the most challenging thing is to get your audience's attention, or even get them to participate? We believe with our app we can make not only conferences more interesting but also easier to interact.
+You can ask questions and see what the audience answers.
+Change the roles and let them submit questions over the app, and answer the highest ranked at the end. And finally let them rate you.
+The better the communication, the better the message is received. 
+This makes your feedback even more accurate and detailed, making it easier to know which points you need to improve at the next conference.
+But our app is not only focused on breaking the distance between the speaker and the audiance, but also between the audience itself, anyone who has our app can save information from other users, so they can communicate with each other later.
 
 ## Requirements
 
