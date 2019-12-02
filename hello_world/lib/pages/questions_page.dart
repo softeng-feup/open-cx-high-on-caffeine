@@ -113,6 +113,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 return new ListTile(
                   leading: Icon(Icons.message),
                   title: Text(questions[index].phrase),
+                  subtitle: Text(questions[index].userName),
                 );
               },
             ),
