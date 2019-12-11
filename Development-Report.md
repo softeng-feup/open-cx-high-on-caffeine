@@ -80,6 +80,14 @@ Briefly describe each use case mentioning the following:
 * **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
 * **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.  
 
+#### Check Questions
+
+* **Actor**: Participant. 
+* **Description**: A participant can check all the questions made by all the attendees of the conference. 
+* **Preconditions and Postconditions**. For a participant to be able to check questions, he/she has to be in the conference (preconditions). All questions can be checked by all conference attendees (postconditions). 
+* **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
+* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.  
+
 ### User stories
 This section will contain the requirements of the product described as **user stories**, organized in a global **user story map** with **user roles** or **themes**.
 
