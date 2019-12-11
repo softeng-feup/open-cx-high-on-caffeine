@@ -57,7 +57,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram 
 
-![use_case](imgs\use_case.png)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case.png)
 
 Create a use-case diagram in UML with all high-level use cases possibly addressed by your module.
 
