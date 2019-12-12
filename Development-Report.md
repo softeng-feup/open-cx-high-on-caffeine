@@ -59,26 +59,24 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case.png)
 
-Create a use-case diagram in UML with all high-level use cases possibly addressed by your module.
-
-Give each use case a concise, results-oriented name. Use cases should reflect the tasks the user needs to be able to accomplish using the system. Include an action verb and a noun. 
-
-Briefly describe each use case mentioning the following:
-
-* **Actor**. Name only the actor that will be initiating this use case, i.e. a person or other entity external to the software system being specified who interacts with the system and performs use cases to accomplish tasks. 
-* **Description**. Provide a brief description of the reason for and outcome of this use case, or a high-level description of the sequence of actions and the outcome of executing the use case. 
-* **Preconditions and Postconditions**. Include any activities that must take place, or any conditions that must be true, before the use case can be started (preconditions) and postconditions. Describe also the state of the system at the conclusion of the use case execution (postconditions). 
-
-* **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
-* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.
-
 #### Ask Question
 
 * **Actor**: Participant. 
 * **Description**: A participant can ask questions. 
 * **Preconditions and Postconditions**. For a participant to be able to ask questions, he/she has to be in the conference (preconditions). When a participant asks a question it is visible in the application for the speaker and other participants (postconditions). 
-* **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
-* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.  
+* **Normal Flow**: 
+   * The device has to be connected to the internet
+   * Actor has to login/create an account
+   * Actor selects "Ask Questions" in the app
+   * Actor writes the question he wants to ask
+   * Actor submits question
+   * Question is available to everyone to see, as well the email of the user that submited it
+* **Alternative Flows and Exceptions**:
+   * Device is not connected to the internet 
+      * Appears an error, not allowing the system to run
+   * App doesn't allow create an account that already exists
+   * At creating account, a password can't have less than 6 characters
+   * It's not possible to send empty questions
 
 #### Check Questions
 
