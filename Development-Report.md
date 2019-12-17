@@ -61,7 +61,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case2.png/)
 
-#### Check Account
+#### Edit Account
 
 * **Actor**: Participant.
 * **Description**: A participant can check their own account details, and edit them.
