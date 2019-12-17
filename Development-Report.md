@@ -57,13 +57,47 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram 
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case.png)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case.png/)
+
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case2.png/)
+
+#### Check Account
+
+* **Actor**: Participant.
+* **Description**: A participant can check their own account details, and edit them.
+* **Preconditions and Postconditions**: In order for a participant to access/edit their account data, they only need to be logged in (preconditions), any changes will be saved and updated for the next time he checks his account (postconditions).
+* **Normal Flow**: 
+   * The device has to be connected to the internet
+   * Actor has to login/create an account
+   * Actor selects "Edit Account" in the app
+   * Name, Country and College info are shown on the screen
+   * The actor can change any information or delete it
+   * He can submit the changes, and regardless of the changes he made, they are saved
+* **Alternative Flows and Exceptions**:
+   * Device is not connected to the internet 
+      * Appears an error, not allowing the system to run
+   * Participant change the information but does not send it
+      * Nothing is stored, so the information are the same as the last change submitted
+
+#### Check Questions
+
+* **Actor**: Participant. 
+* **Description**: A participant can check all the questions made by all the attendees of the conference. 
+* **Preconditions and Postconditions**: For a participant to be able to check questions, he/she has to be in the conference (preconditions). All questions can be checked by all conference attendees (postconditions). 
+* **Normal Flow**:
+   * The device has to be connected to the internet
+   * Actor has to login/create an account
+   * Actor selects "Ask Questions" in the app
+   * All questions are shown on the screen, as well the email of the user that submited it
+* **Alternative Flows and Exceptions**:
+  * Device is not connected to the internet 
+      * Appears an error, not allowing the system to run
 
 #### Ask Question
 
 * **Actor**: Participant. 
 * **Description**: A participant can ask questions. 
-* **Preconditions and Postconditions**. For a participant to be able to ask questions, he/she has to be in the conference (preconditions). When a participant asks a question it is visible in the application for the speaker and other participants (postconditions). 
+* **Preconditions and Postconditions**: For a participant to be able to ask questions, he/she has to be in the conference (preconditions). When a participant asks a question it is visible in the application for the speaker and other participants (postconditions). 
 * **Normal Flow**: 
    * The device has to be connected to the internet
    * Actor has to login/create an account
@@ -74,45 +108,21 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 * **Alternative Flows and Exceptions**:
    * Device is not connected to the internet 
       * Appears an error, not allowing the system to run
-   * App doesn't allow create an account that already exists
-   * At creating account, a password can't have less than 6 characters
-   * It's not possible to send empty questions
+   * Participant tries to submit an empty question
+      * It's not possible to send empty questions, so nothing will be submitted
 
-#### Check Questions
-
-* **Actor**: Participant. 
-* **Description**: A participant can check all the questions made by all the attendees of the conference. 
-* **Preconditions and Postconditions**. For a participant to be able to check questions, he/she has to be in the conference (preconditions). All questions can be checked by all conference attendees (postconditions). 
-* **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
-* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.  
-
-#### Attend Conference
-
-* **Actor**: Participant. 
-* **Description**: A participant can attend a certain conference and participate in it. 
-* **Preconditions and Postconditions**. For a participant to be able to check questions, he/she has to be in the conference (preconditions). All questions can be checked by all conference attendees (postconditions). 
-* **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
-* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.  
+The rest of the tasks have not yet been implemented.
 
 ### User stories
-This section will contain the requirements of the product described as **user stories**, organized in a global **user story map** with **user roles** or **themes**.
 
-For each theme, or role, you may add a small description here. User stories should be detailed in the tool you decided to use for project management (e.g. trello or github projects).
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/participante.PNG)
 
-A user story is a description of desired functionality told from the perspective of the user or customer. A starting template for the description of a user story is 
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/speaker.PNG)
 
-*As a < user role >, I want < goal > so that < reason >.*
-
-You add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the INVEST guidelines.
-
-After the user story text, you should add a draft of the corresponding user interfaces, a simple mockups or drafts, if applicable.
-
-For each user story you should write also the acceptance tests (textually in Gherkin), ie, a description of situations that will help to confirm that the system satisfies the requirements addressed in the user story.
-
-At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. MoSCoW method) and the team should add an estimative of the effort to implemente it, in t-shirt sizes (XS, S, M, L, XL).
+#### https://miro.com/welcomeonboard/0VwIWUWJCAam5D5l1AaPabkzEbWHEB1Jls5sXTl3phmohtcarxZw2JZxMV6PZtwd 
 
 ### Domain model
 
-A simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+
 
 
