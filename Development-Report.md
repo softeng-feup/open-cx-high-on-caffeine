@@ -57,7 +57,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram 
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case2.png/)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/use_case2.png/)
 
 #### Check Account
 
@@ -113,9 +113,9 @@ The rest of the tasks have not yet been implemented.
 
 ### User stories
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/participante.PNG)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/participante.PNG)
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/speaker.PNG)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/speaker.PNG)
 
 #### https://miro.com/welcomeonboard/0VwIWUWJCAam5D5l1AaPabkzEbWHEB1Jls5sXTl3phmohtcarxZw2JZxMV6PZtwd 
 
