@@ -6,21 +6,34 @@ import 'package:firebase_database/firebase_database.dart';
 import '../models/question.dart';
 
 class QuestionsPage extends StatefulWidget {
-  QuestionsPage({Key key, this.auth, this.userId}) : super(key: key);
+  QuestionsPage({Key key, this.auth, this.userId, this.conferencekey, this.sessionkey, this.name}) : super(key: key);
 
   final BaseAuth auth;
   final String userId;
+  final String conferencekey;
+  final String sessionkey;
+  final String name;
 
   @override
-  State<StatefulWidget> createState() => new _QuestionsPageState();
+  State<StatefulWidget> createState() => new _QuestionsPageState(conferencekey: conferencekey, sessionkey: sessionkey,name: name );
 }
 
 class _QuestionsPageState extends State<QuestionsPage> {
+  _QuestionsPageState({this.conferencekey, this.sessionkey, this.name});
+
+  final String conferencekey;
+  final String sessionkey;
+  final String name;
+
   List<Question> questions = List();
   Question question;
   DatabaseReference questionRef;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+   String getname(){
+      return name;
+  }
 
   @override
   void initState() {
@@ -28,7 +41,11 @@ class _QuestionsPageState extends State<QuestionsPage> {
     question = Question("");
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
-    questionRef = database.reference().child('questions');
+    questionRef = database.reference().child('conferences');
+    questionRef = questionRef.child(conferencekey);
+    questionRef = questionRef.child("sessions");
+    questionRef = questionRef.child(sessionkey);
+    questionRef = questionRef.child("questions");
     questionRef.onChildAdded.listen(_onEntryAdded);
     questionRef.onChildChanged.listen(_onEntryChanged);
     questionRef.onChildRemoved.listen(_onEntryRemoved);
@@ -74,7 +91,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('High on Caffeine'),
+        title: new Text(getname()),
       ),
       body: Column(
         children: <Widget>[

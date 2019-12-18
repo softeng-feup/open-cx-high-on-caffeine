@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Feup\\3ANO-1SEMESTRE\\ESOF\\open-cx-high-on-caffeine\\hello_world\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
+            "outputFile": "C:\\Users\\Rita\\Documents\\..MIEIC\\..3 ANO\\ESOF\\open-cx-high-on-caffeine\\hello_world\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\gonca\\.gradle\\caches\\transforms-2\\files-2.1\\9a23e2511cd7fc41ea41862e3811947c\\core-1.0.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\Rita\\.gradle\\caches\\transforms-2\\files-2.1\\50b2d82c8121d0d399c2a796a5c582ef\\core-1.0.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
