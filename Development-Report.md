@@ -57,8 +57,6 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram 
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case.png/)
-
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case2.png/)
 
 #### Check Account
