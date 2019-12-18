@@ -84,6 +84,7 @@ class _ConferencePageState extends State<ConferencePage> {
     print("ssdasdasdsd");
     print(mode);
     print("ssdasdasdsd");
+    if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Choose a Conference'),
@@ -119,5 +120,70 @@ class _ConferencePageState extends State<ConferencePage> {
         ],
       ),
     );
+    else if(mode == "s")
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Choose a Conference'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            flex: 0,
+            child: Center(
+              child: Form(
+                key: formKey,
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(Icons.info),
+                      title: TextFormField(
+                        initialValue: "",
+                        onSaved: (val) => conference.phrase = val,
+                        validator: (val) => val == "" ? val : null,
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: () {
+                        handleSubmit();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Flexible(
+            child: FirebaseAnimatedList(
+              query: conferenceRef,
+              itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+                return new FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => new SessionPage(
+                              userId: _userId, auth: widget.auth, conferencekey: conferences[index].key , mode: mode)));
+                },
+                /*color: Colors.orange,*/
+                padding: EdgeInsets.all(20.0),
+                child: Row( // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(Icons.adjust),
+                    Text(conferences[index].phrase)
+                  ],
+                ),
+              );
+                
+
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+    else
+      return null;
   }
 }

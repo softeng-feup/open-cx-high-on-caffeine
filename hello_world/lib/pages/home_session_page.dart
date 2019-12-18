@@ -6,8 +6,6 @@ import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'questions_page.dart';
 import 'rate_session_page.dart';
-import 'questions_pageSpeaker.dart';
-import 'rate_session_pageSpeaker.dart';
 
 class HomeSessionPage extends StatefulWidget {
   HomeSessionPage({Key key, this.auth, this.userId, this.logoutCallback,  this.conferencekey, this.sessionkey, this.name, this.mode})
@@ -227,7 +225,7 @@ User user = new User("", "", "", "");
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => new QuestionsPageSpeaker(
+                      builder: (context) => new QuestionsPage(
                           userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name)));
             },
           ),
@@ -239,7 +237,7 @@ User user = new User("", "", "", "");
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => new RatePageSpeaker(
+                      builder: (context) => new RatePage(
                           userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name)));
             },
               ),

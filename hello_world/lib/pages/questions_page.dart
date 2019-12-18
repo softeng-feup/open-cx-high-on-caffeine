@@ -6,24 +6,26 @@ import 'package:firebase_database/firebase_database.dart';
 import '../models/question.dart';
 
 class QuestionsPage extends StatefulWidget {
-  QuestionsPage({Key key, this.auth, this.userId, this.conferencekey, this.sessionkey, this.name}) : super(key: key);
+  QuestionsPage({Key key, this.auth, this.userId, this.conferencekey, this.sessionkey, this.name, this.mode}) : super(key: key);
 
   final BaseAuth auth;
   final String userId;
   final String conferencekey;
   final String sessionkey;
   final String name;
+  final String mode;
 
   @override
-  State<StatefulWidget> createState() => new _QuestionsPageState(conferencekey: conferencekey, sessionkey: sessionkey,name: name );
+  State<StatefulWidget> createState() => new _QuestionsPageState(conferencekey: conferencekey, sessionkey: sessionkey,name: name, mode:mode );
 }
 
 class _QuestionsPageState extends State<QuestionsPage> {
-  _QuestionsPageState({this.conferencekey, this.sessionkey, this.name});
+  _QuestionsPageState({this.conferencekey, this.sessionkey, this.name, this.mode});
 
   final String conferencekey;
   final String sessionkey;
   final String name;
+  final String mode;
 
   List<Question> questions = List();
   Question question;
@@ -89,6 +91,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("ssdasdasdsd");
+    print(mode);
+    print("ssdasdasdsd");
+    if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(getname()),
@@ -138,5 +144,30 @@ class _QuestionsPageState extends State<QuestionsPage> {
         ],
       ),
     );
+    else if(mode == "s")
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(getname()),
+      ),
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            child: FirebaseAnimatedList(
+              query: questionRef,
+              itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                  Animation<double> animation, int index) {
+                return new ListTile(
+                  leading: Icon(Icons.message),
+                  title: Text(questions[index].phrase),
+                  subtitle: Text(questions[index].userName),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+    else
+      return null;
   }
 }

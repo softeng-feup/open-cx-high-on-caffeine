@@ -5,7 +5,6 @@ import 'package:hello_world/pages/create_profile_page.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'conference_page.dart';
-import 'conference_pageSpeaker.dart';
 
 class HomePage2 extends StatefulWidget {
   HomePage2({Key key, this.auth, this.userId, this.logoutCallback, this.mode})
@@ -137,65 +136,6 @@ class _HomePage2State extends State<HomePage2> {
     print("ssdasdasdsd");
     print(mode);
     print("ssdasdasdsd");
-    if(mode == "s")
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('High on Caffeine'),
-        actions: <Widget>[
-          new FlatButton(
-              child: new Text('Logout',
-                  style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-              onPressed: signOut)
-        ],
-      ),
-      body: new Row(children: <Widget>[
-        Flex(direction: Axis.vertical, children: <Widget>[
-          IconButton(
-            iconSize: 100,
-            tooltip: "Let's Start",
-            icon: Icon(Icons.record_voice_over),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => new ConferencePageSpeaker(
-                          userId: _userId, auth: widget.auth, mode:mode)));
-            },
-          ),
-          IconButton(
-              iconSize: 100,
-              tooltip: "Edit Profile",
-              icon: Icon(Icons.assignment_ind),
-              onPressed: () async {
-                User auxUser = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => new CreateProfilePage(
-                              userId: _userId,
-                              auth: widget.auth,
-                              userReceived: user,
-                            )));
-                if (auxUser != null) user = auxUser;
-              }),
-        ]),
-        Flex(
-            direction: Axis.vertical,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text("\n\n"),
-              Text(
-                "Let's Start",
-                textScaleFactor: 2,
-              ),
-              Text("\n\n\n\n"),
-              Text(
-                "Edit Profile",
-                textScaleFactor: 2,
-              )
-            ])
-      ]),
-    );
-  else if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('High on Caffeine'),
@@ -253,7 +193,5 @@ class _HomePage2State extends State<HomePage2> {
             ])
       ]),
     );
-  else
-      return null;
   }
 }

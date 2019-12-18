@@ -94,6 +94,10 @@ class _SessionPageState extends State<SessionPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("ssdasdasdsd");
+    print(mode);
+    print("ssdasdasdsd");
+    if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Choose a Session'),
@@ -128,5 +132,69 @@ class _SessionPageState extends State<SessionPage> {
         ],
       ),
     );
+    else if(mode == "s")
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Choose a Session'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            flex: 0,
+            child: Center(
+              child: Form(
+                key: formKey,
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(Icons.info),
+                      title: TextFormField(
+                        initialValue: "",
+                        onSaved: (val) => session.phrase = val,
+                        validator: (val) => val == "" ? val : null,
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: () {
+                        handleSubmit();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Flexible(
+            child: FirebaseAnimatedList(
+              query: sessionRef,
+              itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+                return new FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+            
+                      MaterialPageRoute( 
+                          builder: (context) => new HomeSessionPage(
+                              userId: _userId, auth: widget.auth,  conferencekey: conferencekey, sessionkey: sessions[index].key, name:sessions[index].phrase, mode: mode)));
+                },
+                padding: EdgeInsets.all(20.0),
+                child: Row( // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(Icons.adjust),
+                    Text(sessions[index].phrase)
+                  ],
+                ),
+              );
+               
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+    else 
+      return null;
   }
 }

@@ -8,24 +8,26 @@ import 'package:firebase_database/firebase_database.dart';
 import '../models/conference.dart';
 
 class RatePage extends StatefulWidget {
-  RatePage({Key key, this.auth, this.userId, this.conferencekey, this.sessionkey, this.name}) : super(key: key);
+  RatePage({Key key, this.auth, this.userId, this.conferencekey, this.sessionkey, this.name, this.mode}) : super(key: key);
 
   final BaseAuth auth;
   final String userId;
   final String conferencekey;
   final String sessionkey;
   final String name;
+  final String mode;
 
   @override
-  State<StatefulWidget> createState() => new _RatePageState(conferencekey: conferencekey, sessionkey: sessionkey,name: name );
+  State<StatefulWidget> createState() => new _RatePageState(conferencekey: conferencekey, sessionkey: sessionkey,name: name, mode:mode );
 }
 
 class _RatePageState extends State<RatePage> {
-  _RatePageState({this.conferencekey, this.sessionkey, this.name});
+  _RatePageState({this.conferencekey, this.sessionkey, this.name, this.mode});
 
   final String conferencekey;
   final String sessionkey;
   final String name;
+  final String mode;
 
   Rate rate;
   List<Rate> rates = List();
@@ -95,6 +97,10 @@ class _RatePageState extends State<RatePage> {
   
   @override
   Widget build(BuildContext context) {
+    print("ssdasdasdsd");
+    print(mode);
+    print("ssdasdasdsd");
+    if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(getname()),
@@ -146,6 +152,38 @@ class _RatePageState extends State<RatePage> {
         ],
       ),
     );
+     else if(mode == "s")
+      return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(getname()),
+      ),
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            flex: 0,
+            child: Center(
+              child: Form(
+                key: formKey,
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    IconTheme(
+                  data: IconThemeData(
+                    color: Colors.amber,
+                    size: 70,
+                  ),
+                  child: StarDisplay(value: getrate()  ),
+                )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    else
+      return null;
   }
 }
 
