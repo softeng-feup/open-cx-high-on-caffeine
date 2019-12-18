@@ -59,14 +59,16 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/use_case2.png/)
 
-#### Check Account
+#### Edit Account
 
-* **Actor**: Participant.
-* **Description**: A participant can check their own account details, and edit them.
-* **Preconditions and Postconditions**: In order for a participant to access/edit their account data, they only need to be logged in (preconditions), any changes will be saved and updated for the next time he checks his account (postconditions).
+### USER
+* **Actor**: User.
+* **Description**: The user can check their own account details, and edit them.
+* **Preconditions and Postconditions**: In order for a user to access/edit their account data, they only need to be logged in (preconditions), any changes will be saved and updated for the next time he checks his account (postconditions).
 * **Normal Flow**: 
    * The device has to be connected to the internet
    * Actor has to login/create an account
+   * Actor has to select mode Participant or Speaker
    * Actor selects "Edit Account" in the app
    * Name, Country and College info are shown on the screen
    * The actor can change any information or delete it
@@ -74,32 +76,79 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 * **Alternative Flows and Exceptions**:
    * Device is not connected to the internet 
       * Appears an error, not allowing the system to run
-   * Participant change the information but does not send it
+   * User changes the information but does not send it
       * Nothing is stored, so the information are the same as the last change submitted
 
 #### Check Questions
 
-* **Actor**: Participant. 
-* **Description**: A participant can check all the questions made by all the attendees of the conference. 
-* **Preconditions and Postconditions**: For a participant to be able to check questions, he/she has to be in the conference (preconditions). All questions can be checked by all conference attendees (postconditions). 
+* **Actor**: User. 
+* **Description**: The user can check all the questions made by all the attendees of the conference. 
+* **Preconditions and Postconditions**: For a user to be able to check questions, he/she has to be in the conference (preconditions). All questions can be checked by all conference attendees (postconditions). 
 * **Normal Flow**:
    * The device has to be connected to the internet
    * Actor has to login/create an account
-   * Actor selects "Ask Questions" in the app
-   * All questions are shown on the screen, as well the email of the user that submited it
+   * Actor has to select mode Participant or Speaker
+   * Actor selects "Let'Start" in the app
+   * He/she has to choose a conference and finally a session
+   * In mode Participant he/she has to select "Ask Question", in mode Speaker "Check Questions"
+   * In both cases, all the questions submitted associated with the session are shown on the screen, as well the email of the user that submitted it
 * **Alternative Flows and Exceptions**:
   * Device is not connected to the internet 
       * Appears an error, not allowing the system to run
+  * All conferences and sessions are submitted by Speakers, so it is possible that when a Participant wishes to choose, he/she will not have any
+
+#### Check Session Rate
+
+* **Actor**: User. 
+* **Description**: The user can check the average rate that has been submitted in a specific session.
+* **Preconditions and Postconditions**: For a user to be able to check rates, he/she has to be in the conference (preconditions). The average rate can be checked by all conference attendees (postconditions). 
+* **Normal Flow**:
+   * The device has to be connected to the internet
+   * Actor has to login/create an account
+   * Actor has to select mode Participant or Speaker
+   * Actor selects "Let'Start" in the app
+   * He/she has to choose a conference and finally a session
+   * In mode Participant he/she has to select "Rate Session", in mode Speaker "Check Rate"
+   * In both cases, the average rate associated with the session are shown on the screen in a format of five starts maximum
+* **Alternative Flows and Exceptions**:
+  * Device is not connected to the internet 
+      * Appears an error, not allowing the system to run
+  * All conferences and sessions are submitted by Speakers, so it is possible that when a Participant wishes to choose, he/she will not have any
+
+### PARTICIPANT     
+#### Rate Conference
+
+* **Actor**: Participant. 
+* **Description**: A participant can rate a specific session.
+* **Preconditions and Postconditions**: For a participant to be rate, he/she has to be in the conference (preconditions). When a participant rate a session the average rate is calculated again (postconditions). 
+* **Normal Flow**: 
+   * The device has to be connected to the internet
+   * Actor has to login/create an account
+   * Actor has to select mode Participant or Speaker
+   * Actor selects "Let'Start" in the app
+   * He/she has to choose a conference and finally a session
+   * In mode Participant he/she has to select "Rate Session"
+   * Actor writes the rate (0-5)
+   * Actor submits rate
+   * The new average rate associated with the session are shown on the screen in a format of five starts maximum
+* **Alternative Flows and Exceptions**:
+   * Device is not connected to the internet 
+      * Appears an error, not allowing the system to run
+   * Participant tries to submit an empty rate or a value bigegr than 5
+      * It's not possible to send empty strings or a value bigger than 5, so nothing will be submitted
 
 #### Ask Question
 
 * **Actor**: Participant. 
 * **Description**: A participant can ask questions. 
-* **Preconditions and Postconditions**: For a participant to be able to ask questions, he/she has to be in the conference (preconditions). When a participant asks a question it is visible in the application for the speaker and other participants (postconditions). 
+* **Preconditions and Postconditions**: For a participant to be able to ask questions, he/she has to be in the conference (preconditions). When a participant asks a question it is visible in the application for the all users (postconditions). 
 * **Normal Flow**: 
    * The device has to be connected to the internet
    * Actor has to login/create an account
-   * Actor selects "Ask Questions" in the app
+   * Actor has to select mode Participant
+   * Actor selects "Let'Start" in the app
+   * He/she has to choose a conference and finally a session
+   * In mode Participant he/she has to select "Ask Question"
    * Actor writes the question he wants to ask
    * Actor submits question
    * Question is available to everyone to see, as well the email of the user that submited it
@@ -109,7 +158,47 @@ Start by contextualizing your module, describing the main concepts, terms, roles
    * Participant tries to submit an empty question
       * It's not possible to send empty questions, so nothing will be submitted
 
-The rest of the tasks have not yet been implemented.
+
+### SPEAKER 
+#### Submit Conferences
+
+* **Actor**: Speaker. 
+* **Description**: A speaker can submit conferences. 
+* **Preconditions and Postconditions**: For a speaker to be able to add conferences, he/she has to be in the conference (preconditions). When a speaker adds a conference, it is visible in the application for all users (postconditions). 
+* **Normal Flow**: 
+   * The device has to be connected to the internet
+   * Actor has to login/create an account
+   * Actor has to select mode Speaker
+   * Actor selects "Let'Start" in the app
+   * Actor writes the new conference
+   * Actor submits name
+   * The new conference is now available to everyone to see and choose
+* **Alternative Flows and Exceptions**:
+   * Device is not connected to the internet 
+      * Appears an error, not allowing the system to run
+   * Participant tries to submit an empty conference
+      * It's not possible to send empty strings, so nothing will be submitted
+
+#### Submit Sessions
+
+* **Actor**: Speaker. 
+* **Description**: A speaker can submit sessions of a conference. 
+* **Preconditions and Postconditions**: For a speaker to be able to add sessions, he/she has to be in the conference (preconditions). When a speaker adds a session, it is visible in the application for all users (postconditions). 
+* **Normal Flow**: 
+   * The device has to be connected to the internet
+   * Actor has to login/create an account
+   * Actor has to select mode Speaker
+   * Actor selects "Let'Start" in the app
+   *  He/she has to choose a conference
+   * Actor writes the new session
+   * Actor submits name
+   * The new session is now available to everyone to see and choose
+* **Alternative Flows and Exceptions**:
+   * Device is not connected to the internet 
+      * Appears an error, not allowing the system to run
+   * Participant tries to submit an empty session
+      * It's not possible to send empty strings, so nothing will be submitted
+
 
 ### User stories
 
