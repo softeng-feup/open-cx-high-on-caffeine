@@ -59,9 +59,9 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/use_case2.png/)
 
+### USER
 #### Edit Account
 
-### USER
 * **Actor**: User.
 * **Description**: The user can check their own account details, and edit them.
 * **Preconditions and Postconditions**: In order for a user to access/edit their account data, they only need to be logged in (preconditions), any changes will be saved and updated for the next time he checks his account (postconditions).
