@@ -210,6 +210,28 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Domain model
 
+A simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+
+## Architecture and Design
+
+In this app, the first page to appear (main page) is the login page. In this page the user can enter in the application with the account he already has or he can create a new account. Regardless of already having an account or not, after the user register his credentials he will be redireted to a page where he can choose to ask a question or edit his profile. In the questions page the user can introduce any question he wants and he can also see all the questions asked by all the other user that participated. After the user submits his question, it will be exposed to every other user to see it. In the edit profile page the user can introduce is name, country and college.
+
+### Logical Architecture
+
+### Physical Architecture
+
+### Prototype
+
+## Implementation
+
+## Test
+
+## Configuration and change management
+
+## Project Management
+
+## Evolution - contributions to open-cx
+
 
 
 
