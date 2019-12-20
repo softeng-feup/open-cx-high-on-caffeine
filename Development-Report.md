@@ -273,7 +273,7 @@ In this app, the first page to appear (main page) is the login page. In this pag
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/logic.png)
 
 ### Physical Architecture
-Our application was developed through Flutter. We choose Flutter because it was highlight recommended, is a free and open source Google mobile UI framework that allows you to create a native mobile app for IOS and Android.
+Our application was developed through Flutter. We chose Flutter because it was the highlight recommended, is a free and open source Google mobile UI framework that allows you to create a native mobile app for IOS and Android.
 
 We use the  Google Firebase because it's free and simple to use, allows us to add and delete data and see all of the data in real time.
 We also use an authentication system (Email and Password) provided by the Firebase, which facilitates the entire login validation process.
@@ -299,8 +299,18 @@ During the development of our project we tried to follow the Github flow wheneve
 
 ## Project Management
 
-## Evolution - contributions to open-cx
+#### https://github.com/softeng-feup/open-cx-high-on-caffeine/projects/1?fbclid=IwAR0FcorEah2shTmrkJo6q0kxakvcSEy2K9xtVadzPI81cqjMn242F65ckeQ
 
+## Evolution - contributions to open-cx
+Issue: Create a global perspective for the organizer on how the conference went.
+https://github.com/softeng-feup/open-cx/issues/54
+
+It would be interesting for the conference organizer to know how his conference went, especially to know the positive critiques and most importantly the negative ones to improve in the future. And also have the possibility to know which conferences were the most successful.
+
+When the organizer logs in, he would have access to two types of information :
+
+* the list of conferences he organized from highest to worst, and their specific rating (the rating of each one would be calculated by averaging all the sessions ratings that are part of the conference).
+* the list of all the comments left by participants about each conference, divided into positives and negatives (when a participant enters a comment, they would be required to enter the type, positive or negative).
 
 
 
