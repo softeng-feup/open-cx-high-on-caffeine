@@ -280,6 +280,11 @@ In the initial prototype of our app we began to decide the main features it shou
 
 ## Implementation
 
+* **Iteration 1**: Learned Flutter and prototype development.
+* **Iteration 2**: In this iteartion we implemented the login and register features, as well the edit profile features.
+* **Iteration 3**: We continued the work we had been doing in iteration 2 and did the part where an user can ask a question.
+* **Iteration 4**: Slightly changed the way our app was working and incorporated some features as adding conferences, adding session, rating a session and we made a distinction between to types of users, participant and speaker. While making this additions we also had to change the original design of the app, due to the fact that several new pages were created.
+
 ## Test
 
 ## Configuration and change management
