@@ -276,6 +276,8 @@ In this app, the first page to appear (main page) is the login page. In this pag
 
 ### Prototype
 
+In the initial prototype of our app we began to decide the main features it should have. As we were deciding that, we started to develop our user stories and building some mockups, while having in mind all the principle features that the app should have after being finished.
+
 ## Implementation
 
 ## Test
