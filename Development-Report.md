@@ -57,7 +57,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram 
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/use_case2.png/)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case2.png/)
 
 ### USER
 #### Edit Account
@@ -202,15 +202,67 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### User stories
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/participante.PNG)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/participante.PNG)
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/speaker.PNG)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/speaker.PNG)
 
 #### https://miro.com/welcomeonboard/0VwIWUWJCAam5D5l1AaPabkzEbWHEB1Jls5sXTl3phmohtcarxZw2JZxMV6PZtwd 
 
+* **User stories**: "As a participant I want to register" / "As a speaker I want to register"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a registered participant/speaker, I am required to log in so that I can access the system"
+   * **Value**: Must have
+   * **Effort**: L
+
+* **User stories**: "As a participant/speaker I want to edit my account so that I can update my personal information"
+   * **Value**: It's not really necessary
+   * **Effort**: M
+   
+* **User stories**: "As a participant/speaker I want to see the list of available conferences, so that I can choose one"
+   * **Value**: Must have
+   * **Effort**: L
+ 
+* **User stories**: "As a speaker, I want to add my conference, if necessary, so that I can choose it later"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a participant I want to see the list of available conferences, so that I can choose one"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to add the session I'm presenting, if necessary, so that I can manage it later"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to see the list of available sessions, so that I can choose the one I'm doing"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a participant I want to ask a question for the speaker to answer"
+   * **Value**: Must have
+   * **Effort**: L
+   
+ * **User stories**: "As a participant I want to rate the session"
+   * **Value**: Must have
+   * **Effort**: L
+   
+ * **User stories**: "As a participant I want to check all the questions submitted"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to check all the questions submitted, so that I can answer them in the end"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to check the session rate given by my audience"
+   * **Value**: Must have
+   * **Effort**: L
+
 ### Domain model
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/uml.png)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/uml.png)
 
 ## Architecture and Design
 
@@ -218,17 +270,32 @@ In this app, the first page to appear (main page) is the login page. In this pag
 
 ### Logical Architecture
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/logic.png)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/logic.png)
 
 ### Physical Architecture
+Our application was developed through Flutter. We choose Flutter because it was highlight recommended, is a free and open source Google mobile UI framework that allows you to create a native mobile app for IOS and Android.
+
+We use the  Google Firebase because it's free and simple to use, allows us to add and delete data and see all of the data in real time.
+We also use an authentication system (Email and Password) provided by the Firebase, which facilitates the entire login validation process.
+
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/PhysicalArchitecture.png)
 
 ### Prototype
 
+In the initial prototype of our app we began to decide the main features it should have. As we were deciding that, we started to develop our user stories and building some mockups, while having in mind all the principle features that the app should have after being finished.
+
 ## Implementation
+
+* **Iteration 1**: Learned Flutter and prototype development.
+* **Iteration 2**: In this iteartion we implemented the login and register features, as well the edit profile features.
+* **Iteration 3**: We continued the work we had been doing in iteration 2 and did the part where an user can ask a question.
+* **Iteration 4**: Slightly changed the way our app was working and incorporated some features as adding conferences, adding session, rating a session and we made a distinction between to types of users, participant and speaker. While making this additions we also had to change the original design of the app, due to the fact that several new pages were created.
 
 ## Test
 
 ## Configuration and change management
+
+During the development of our project we tried to follow the Github flow whenever it was possible, but we mainly focused in the use of branches and in the merge of those branches with the master branch.
 
 ## Project Management
 
