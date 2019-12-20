@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Rita\\Documents\\..MIEIC\\..3 ANO\\ESOF\\open-cx-high-on-caffeine\\hello_world\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
+            "outputFile": "C:\\Users\\luisg\\Desktop\\FEUP\\ESOF\\open-cx-high-on-caffeine\\hello_world\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rita\\.gradle\\caches\\transforms-2\\files-2.1\\50b2d82c8121d0d399c2a796a5c582ef\\core-1.0.0\\res\\values-as\\values-as.xml",
+                    "source": "C:\\Users\\luisg\\.gradle\\caches\\transforms-2\\files-2.1\\50b2d82c8121d0d399c2a796a5c582ef\\core-1.0.0\\res\\values-as\\values-as.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Rita\\.gradle\\caches\\transforms-2\\files-2.1\\41007b6fa65dbd29adadeab06fb72461\\jetified-play-services-basement-16.2.0\\res\\values-as\\values.xml",
+                    "source": "C:\\Users\\luisg\\.gradle\\caches\\transforms-2\\files-2.1\\4013596c95f753add602322c3a407e0e\\jetified-play-services-basement-16.2.0\\res\\values-as\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Rita\\.gradle\\caches\\transforms-2\\files-2.1\\bc6a8753aa617c33842974d80e2452af\\jetified-play-services-base-16.0.1\\res\\values-as\\values.xml",
+                    "source": "C:\\Users\\luisg\\.gradle\\caches\\transforms-2\\files-2.1\\42a214e1471f74df07063f52033aae03\\jetified-play-services-base-16.0.1\\res\\values-as\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
