@@ -218,6 +218,8 @@ In this app, the first page to appear (main page) is the login page. In this pag
 
 ### Logical Architecture
 
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/logic.png)
+
 ### Physical Architecture
 
 ### Prototype
