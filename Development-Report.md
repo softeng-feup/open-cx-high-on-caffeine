@@ -299,6 +299,8 @@ During the development of our project we tried to follow the Github flow wheneve
 
 ## Project Management
 
+#### https://github.com/softeng-feup/open-cx-high-on-caffeine/projects/1?fbclid=IwAR0FcorEah2shTmrkJo6q0kxakvcSEy2K9xtVadzPI81cqjMn242F65ckeQ
+
 ## Evolution - contributions to open-cx
 
 
