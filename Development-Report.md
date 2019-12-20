@@ -273,7 +273,7 @@ In this app, the first page to appear (main page) is the login page. In this pag
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/logic.png)
 
 ### Physical Architecture
-Our application was developed through Flutter. We choose Flutter because it was highlight recommended, is a free and open source Google mobile UI framework that allows you to create a native mobile app for IOS and Android.
+Our application was developed through Flutter. We chose Flutter because it was the highlight recommended, is a free and open source Google mobile UI framework that allows you to create a native mobile app for IOS and Android.
 
 We use the  Google Firebase because it's free and simple to use, allows us to add and delete data and see all of the data in real time.
 We also use an authentication system (Email and Password) provided by the Firebase, which facilitates the entire login validation process.
