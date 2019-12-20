@@ -208,6 +208,58 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 #### https://miro.com/welcomeonboard/0VwIWUWJCAam5D5l1AaPabkzEbWHEB1Jls5sXTl3phmohtcarxZw2JZxMV6PZtwd 
 
+* **User stories**: "As a participant I want to register" / "As a speaker I want to register"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a registered participant/speaker, I am required to log in so that I can access the system"
+   * **Value**: Must have
+   * **Effort**: L
+
+* **User stories**: "As a participant/speaker I want to edit my account so that I can update my personal information"
+   * **Value**: It's not really necessary
+   * **Effort**: M
+   
+* **User stories**: "As a participant/speaker I want to see the list of available conferences, so that I can choose one"
+   * **Value**: Must have
+   * **Effort**: L
+ 
+* **User stories**: "As a speaker, I want to add my conference, if necessary, so that I can choose it later"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a participant I want to see the list of available conferences, so that I can choose one"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to add the session I'm presenting, if necessary, so that I can manage it later"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to see the list of available sessions, so that I can choose the one I'm doing"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a participant I want to ask a question for the speaker to answer"
+   * **Value**: Must have
+   * **Effort**: L
+   
+ * **User stories**: "As a participant I want to rate the session"
+   * **Value**: Must have
+   * **Effort**: L
+   
+ * **User stories**: "As a participant I want to check all the questions submitted"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to check all the questions submitted, so that I can answer them in the end"
+   * **Value**: Must have
+   * **Effort**: L
+   
+* **User stories**: "As a speaker I want to check the session rate given by my audience"
+   * **Value**: Must have
+   * **Effort**: L
+
 ### Domain model
 
 ![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/uml.png)
