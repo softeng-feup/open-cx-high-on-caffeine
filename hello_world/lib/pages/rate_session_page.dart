@@ -97,9 +97,9 @@ class _RatePageState extends State<RatePage> {
   
   @override
   Widget build(BuildContext context) {
-    print("ssdasdasdsd");
+    print("rate_session_page");
     print(mode);
-    print("ssdasdasdsd");
+    print("rate_session_page");
     if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(

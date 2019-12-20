@@ -91,9 +91,9 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("ssdasdasdsd");
+    print("question_page");
     print(mode);
-    print("ssdasdasdsd");
+    print("question_page");
     if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(

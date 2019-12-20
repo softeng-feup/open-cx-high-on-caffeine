@@ -81,9 +81,9 @@ class _ConferencePageState extends State<ConferencePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("ssdasdasdsd");
+    print("conference_page");
     print(mode);
-    print("ssdasdasdsd");
+    print("conference_page");
     if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(

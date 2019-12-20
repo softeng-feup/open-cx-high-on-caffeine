@@ -146,9 +146,9 @@ User user = new User("", "", "", "");
   Widget build(BuildContext context) {
     checkAlreadyExists();
     
-    print("ssdasdasdsd");
+    print("home_session_page");
     print(mode);
-    print("ssdasdasdsd");
+    print("home_session_page");
     if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(
@@ -171,7 +171,7 @@ User user = new User("", "", "", "");
                   context,
                   MaterialPageRoute(
                       builder: (context) => new QuestionsPage(
-                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name)));
+                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name, mode:mode)));
             },
           ),
           IconButton(
@@ -183,7 +183,7 @@ User user = new User("", "", "", "");
                   context,
                   MaterialPageRoute(
                       builder: (context) => new RatePage(
-                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name)));
+                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name, mode:mode)));
             },
               ),
         ]),
@@ -226,7 +226,7 @@ User user = new User("", "", "", "");
                   context,
                   MaterialPageRoute(
                       builder: (context) => new QuestionsPage(
-                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name)));
+                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name, mode: mode)));
             },
           ),
           IconButton(
@@ -238,7 +238,7 @@ User user = new User("", "", "", "");
                   context,
                   MaterialPageRoute(
                       builder: (context) => new RatePage(
-                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name)));
+                          userId: _userId, auth: widget.auth, conferencekey: conferencekey, sessionkey: sessionkey, name:name, mode: mode)));
             },
               ),
         ]),

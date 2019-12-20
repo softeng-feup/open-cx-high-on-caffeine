@@ -133,9 +133,9 @@ class _HomePage2State extends State<HomePage2> {
   @override
   Widget build(BuildContext context) {
     checkAlreadyExists();
-    print("ssdasdasdsd");
+    print("home2_page");
     print(mode);
-    print("ssdasdasdsd");
+    print("home2_page");
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('High on Caffeine'),

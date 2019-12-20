@@ -94,9 +94,9 @@ class _SessionPageState extends State<SessionPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("ssdasdasdsd");
+    print("session_page");
     print(mode);
-    print("ssdasdasdsd");
+    print("session_page");
     if(mode == "p")
     return new Scaffold(
       appBar: new AppBar(
