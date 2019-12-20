@@ -4,7 +4,7 @@ import 'package:hello_world/models/user.dart';
 import 'package:hello_world/pages/create_profile_page.dart';
 import '../services/authentication.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'questions_page.dart';
+import '../pages/home_page2.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.auth, this.userId, this.logoutCallback})
@@ -142,31 +142,28 @@ class _HomePageState extends State<HomePage> {
         Flex(direction: Axis.vertical, children: <Widget>[
           IconButton(
             iconSize: 100,
-            tooltip: "Questions",
-            icon: Icon(Icons.question_answer),
+            tooltip: "Participant",
+            icon: Icon(Icons.accessibility),
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => new QuestionsPage(
-                          userId: _userId, auth: widget.auth)));
+                      builder: (context) => new HomePage2(
+                          userId: _userId, auth: widget.auth, mode:"p")));
             },
           ),
           IconButton(
               iconSize: 100,
-              tooltip: "Edit Profile",
-              icon: Icon(Icons.assignment_ind),
-              onPressed: () async {
-                User auxUser = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => new CreateProfilePage(
-                              userId: _userId,
-                              auth: widget.auth,
-                              userReceived: user,
-                            )));
-                if (auxUser != null) user = auxUser;
-              }),
+              tooltip: "Speaker",
+              icon: Icon(Icons.work),
+                   onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new HomePage2(
+                          userId: _userId, auth: widget.auth, mode:"s")));
+            },
+          ),
         ]),
         Flex(
             direction: Axis.vertical,
@@ -174,12 +171,12 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Text("\n\n"),
               Text(
-                "Ask Questions",
+                "Participant",
                 textScaleFactor: 2,
               ),
               Text("\n\n\n\n"),
               Text(
-                "Edit Profile",
+                "Speaker",
                 textScaleFactor: 2,
               )
             ])

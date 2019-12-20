@@ -1,4 +1,4 @@
-#Tue Nov 05 17:24:59 GMT 2019
-base.0=D\:\\Feup\\3ANO-1SEMESTRE\\ESOF\\open-cx-high-on-caffeine\\hello_world\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Wed Dec 18 02:44:55 GMT 2019
+base.0=C\:\\Users\\Rita\\Documents\\..MIEIC\\..3 ANO\\ESOF\\open-cx-high-on-caffeine\\hello_world\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
