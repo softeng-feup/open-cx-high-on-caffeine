@@ -57,7 +57,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram 
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/use_case2.png/)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/use_case2.png/)
 
 ### USER
 #### Edit Account
@@ -202,15 +202,15 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### User stories
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/participante.PNG)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/participante.PNG)
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/speaker.PNG)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/speaker.PNG)
 
 #### https://miro.com/welcomeonboard/0VwIWUWJCAam5D5l1AaPabkzEbWHEB1Jls5sXTl3phmohtcarxZw2JZxMV6PZtwd 
 
 ### Domain model
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/uml.png)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/uml.png)
 
 ## Architecture and Design
 
@@ -218,9 +218,15 @@ In this app, the first page to appear (main page) is the login page. In this pag
 
 ### Logical Architecture
 
-![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/logic.png)
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/logic.png)
 
 ### Physical Architecture
+Our application was developed through Flutter. We choose Flutter because it was highlight recommended, is a free and open source Google mobile UI framework that allows you to create a native mobile app for IOS and Android.
+
+We use the  Google Firebase because it's free and simple to use, allows us to add and delete data and see all of the data in real time.
+We also use an authentication system (Email and Password) provided by the Firebase, which facilitates the entire login validation process.
+
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/master/imgs/PhysicalArchitecture.png)
 
 ### Prototype
 
