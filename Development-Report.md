@@ -289,6 +289,8 @@ In the initial prototype of our app we began to decide the main features it shou
 
 ## Configuration and change management
 
+During the development of our project we tried to follow the Github flow whenever it was possible, but we mainly focused in the use of branches and in the merge of those branches with the master branch.
+
 ## Project Management
 
 ## Evolution - contributions to open-cx
