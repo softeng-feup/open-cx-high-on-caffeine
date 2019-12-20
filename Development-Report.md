@@ -210,7 +210,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Domain model
 
-A simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+![alt text](https://github.com/softeng-feup/open-cx-high-on-caffeine/blob/rita/imgs/uml.png)
 
 ## Architecture and Design
 
